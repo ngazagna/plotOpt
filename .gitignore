@@ -159,3 +159,4 @@ dmypy.json
 
 # Dolphin
 # *.directory
+.vscode/settings.json
