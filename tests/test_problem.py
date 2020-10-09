@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from scipy.optimize import check_grad
 
-from sandbox import LogregL2Problem, loss_logreg_l2, grad_logreg_l2
+from problem import LogregL2Problem, loss_logreg_l2, grad_logreg_l2
 
 @pytest.mark.problem
 class TestProblem:

@@ -1,15 +1,38 @@
 import numpy as np
 from scipy.optimize import check_grad
+from abc import ABC, abstractmethod
 
 
-class LogregL2Problem:
-    def __init__(self, X, y, lmbd):
+class Problem(ABC):
+    """Abstract class defining a problem"""
+
+    def __init__(self, X, y):
         self.X = X
         self.y = y
-        self.lmbd = lmbd
 
-    def set_data(self, X, y):
-        self.X, self.y = X, y
+    @abstractmethod
+    def loss(self, beta):
+        """Loss function of the problem at beta
+
+        Args:
+            beta : weights vector
+        """
+        pass
+
+    @abstractmethod
+    def grad(self, beta):
+        """Gradient function of the loss at beta
+
+        Args:
+            beta : weights vector
+        """
+        pass
+
+
+class LogregL2Problem(Problem):
+    def __init__(self, X, y, lmbd):
+        super().__init__(X, y)
+        self.lmbd = lmbd
 
     def loss(self, beta):
         return loss_logreg_l2(beta, self.X, self.y, self.lmbd)

@@ -4,7 +4,7 @@
 import numpy as np
 import pytest
 
-from sandbox import generate_data
+from problem import generate_data
 
 SEED = 0
 np.random.seed(seed=SEED)
