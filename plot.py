@@ -31,3 +31,14 @@ def plot_time(monitors, solvers):
         plt.ylabel("$f(x_k) - f(x^*)$")
 
     plt.legend(solvers)
+
+
+def plot_iteration(monitors, solvers):
+    for monit in monitors:
+        objs = monit.obj
+        plt.semilogy(np.linspace(0, monit.iteration, len(objs)), objs, lw=2)
+        plt.title("Loss")
+        plt.xlabel("Iteration")
+        plt.ylabel("$f(x_k) - f(x^*)$")
+
+    plt.legend(solvers)
