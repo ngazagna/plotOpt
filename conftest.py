@@ -4,7 +4,7 @@
 import numpy as np
 import pytest
 
-from data import generate_data
+from data import generate_binary
 
 SEED = 0
 np.random.seed(seed=SEED)
@@ -34,7 +34,7 @@ N_FEATURES_SMALL = 20
 def dataset():
     n_samples = N_SAMPLES_SMALL
     n_features = N_FEATURES_SMALL
-    return generate_data(n_samples, n_features)
+    return generate_binary(n_samples, n_features)
 
 # @pytest.fixture(scope="session")
 # def X():
