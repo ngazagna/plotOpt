@@ -59,7 +59,6 @@ def sigmoid(t):
     """Sigmoid function"""
     return 1. / (1. + np.exp(-t))
 
-
 def loss_logreg_l2(beta, X, y, lmbd):
     n_samples = X.shape[0]
     y_X_beta = y * X.dot(beta.flatten())
@@ -71,14 +70,6 @@ def grad_logreg_l2(beta, X, y, lmbd):
     n_samples = X.shape[0]
     y_X_beta = y * X.dot(beta.flatten())
     return (X.T.dot(y * (sigmoid(y_X_beta) - 1)) / n_samples) + lmbd * beta
-
-def generate_data(n_samples, n_features):
-    # rng = np.random.RandomState(0)
-    # return rng.randn(n_samples, n_features), rng.randn(n_samples)
-    X = np.random.randn(n_samples, n_features)
-    beta = np.random.randn(n_features)
-    y = np.sign(X.dot(beta))
-    return X, y
 
 
 if __name__ == "__main__":
