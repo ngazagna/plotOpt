@@ -163,3 +163,6 @@ dmypy.json
 
 # Outputs
 /outputs/*
+
+# Conda virtual env activation shortcut
+activate_venv.sh
