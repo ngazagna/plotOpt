@@ -76,7 +76,8 @@ def plot_2d(df, f, beta_star=None):
     X, Y = np.meshgrid(x, y)
 
     # Compute loss at each point of the grid
-    Z = tabulate(x, y, f)
+    # Z = tabulate(x, y, f) # def f(x, y):
+    Z = f([x, y]) # def f(x, y):
 
     ## Plot 2D contour figure
     fig, ax = plt.subplots(figsize=(5, 3))
