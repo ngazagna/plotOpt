@@ -91,7 +91,11 @@ def plot_2d(df, f, beta_star=None):
 
     cm = plt.cm.get_cmap("RdYlBu") # param
     sc = ax.scatter(beta0, beta1, c=np.arange(beta0.shape[0]), marker="o", s=60, cmap=cm, zorder=2) # param
-    cb = plt.colorbar(sc, format="%d")
+    # TODO: Set ticks every ~10/20% of the iterations
+    cb = plt.colorbar(sc)#, format="%d")
+    cb.set_ticks(np.arange(beta0.shape[0]))
+    cb.set_ticklabels(np.arange(beta0.shape[0]))
+    # TODO: Plot iterations or Time or Epochs
     cb.ax.set_title("Iterations")
 
     if beta_star is not None:
