@@ -1,4 +1,7 @@
+#!/usr/bin/python
+
 import os
+import click
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -88,8 +91,8 @@ def plot_2d(df, f, beta_star=None):
 
     cm = plt.cm.get_cmap("RdYlBu") # param
     sc = ax.scatter(beta0, beta1, c=np.arange(beta0.shape[0]), marker="o", s=60, cmap=cm, zorder=2) # param
-    clb = plt.colorbar(sc)
-    clb.ax.set_title("Iterations")
+    cb = plt.colorbar(sc, format="%d")
+    cb.ax.set_title("Iterations")
 
     if beta_star is not None:
         ax.scatter(beta_star[0], beta_star[1], s=100, linewidth=3, c="limegreen", marker="x", zorder=2) # numerical solution
@@ -98,7 +101,9 @@ def plot_2d(df, f, beta_star=None):
     return fig, ax
 
 
-if __name__ == "__main__":
+@click.command()
+@click.option("--save/--no-save", default=True, help="Save the example 2D plot.")
+def example_2d_plot(save):
     folder = os.path.join(os.getcwd(), "conv_tables")
     full_path = os.path.join(folder, "conv_2D.csv")
     df = pd.read_csv(full_path)
@@ -108,9 +113,11 @@ if __name__ == "__main__":
 
     fig, ax = plot_2d(df, f, beta_star)
     # plt.title(r"$\gamma = 1 / L$")
-    plt.show()
 
-    save_figure = False
-    if save_figure:
+    # save = False
+    if save:
         plt.savefig("outputs/example_plot_2d.pdf", bbox_inches="tight")
     plt.show()
+
+if __name__ == "__main__":
+    example_2d_plot()
