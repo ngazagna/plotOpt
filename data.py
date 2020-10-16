@@ -4,12 +4,14 @@ from sklearn.datasets import make_classification
 def generate_binary(n_samples, n_features):
     """
     Generate binary classification data with dense design matrix.
+
     Parameters
     ----------
     n_samples : int
         Number of data samples.
     n_features : int
         Number of data samples.
+
     Returns
     ----------
     X : ndarray of shape (n_samples, n_features)
